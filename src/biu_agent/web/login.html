@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>账号登录 · biu-agent</title>
+    <link rel="icon" href="/assistant/assets/mark.svg" />
+    <link rel="stylesheet" href="/assistant/assets/workspace.css" />
+    <script type="module" src="/assistant/assets/login.js"></script>
+  </head>
+  <body class="login-body">
+    <main class="login-layout">
+      <aside class="login-art">
+        <div class="brand">
+          <img src="/assistant/assets/mark.svg" alt="" /><strong>biu-agent</strong>
+        </div>
+        <div class="login-copy">
+          <span class="mini-label">材料工作台</span>
+          <h1>让回答，<br />有据可查。</h1>
+          <p>用智能助手阅读业务资料，<br />从每个结论回到原文。</p>
+        </div>
+        <div class="illustration" aria-hidden="true">
+          <div class="stack-sheet s1"></div>
+          <div class="stack-sheet s2"></div>
+          <div class="stack-sheet s3"><span>验收说明</span><i></i><i></i><i></i><b>✓</b></div>
+        </div>
+      </aside>
+      <section class="login-side">
+        <form class="login-form" id="login" method="post">
+          <img class="login-mark" src="/assistant/assets/mark.svg" alt="" />
+          <h2 id="login-title">登录工作台</h2>
+          <p id="login-info" role="status">使用已注册的用户名和密码登录。</p>
+          <label for="username"
+            >用户名
+            <input
+              id="username"
+              autocomplete="username"
+              required
+              maxlength="48"
+              placeholder="输入用户名"
+            />
+          </label>
+          <label for="password"
+            >密码
+            <span class="password">
+              <input
+                id="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                minlength="8"
+                maxlength="128"
+                placeholder="输入密码"
+              />
+              <button type="button" id="reveal" aria-label="显示密码">显示</button>
+            </span>
+          </label>
+          <label id="confirm-field" for="confirm-password" hidden
+            >确认密码
+            <input
+              id="confirm-password"
+              type="password"
+              autocomplete="new-password"
+              disabled
+              maxlength="128"
+              placeholder="再次输入密码"
+            />
+          </label>
+          <p id="auth-error" role="alert"></p>
+          <button id="submit" type="submit" class="primary">登录</button>
+          <button id="mode-switch" type="button" class="account-switch">注册账号</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

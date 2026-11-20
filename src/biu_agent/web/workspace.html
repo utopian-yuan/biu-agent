@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f5f7f4" />
+    <title>材料工作台 · biu-agent</title>
+    <link rel="icon" href="../assets/mark.svg" />
+    <link rel="stylesheet" href="../assets/workspace.css" />
+    <script type="module" src="../assets/workspace.js"></script>
+  </head>
+  <body>
+    <a href="#main" class="skip">进入主要内容</a>
+    <div class="shell">
+      <aside id="rail" aria-label="工作台导航">
+        <a class="brand" href="./"
+          ><img src="../assets/mark.svg" alt="" /><strong>biu-agent</strong></a
+        >
+        <button id="new" class="new" data-ico="plus">新建对话</button>
+        <nav aria-label="工作区">
+          <button data-nav="chat" data-ico="chat">助手对话</button
+          ><button data-nav="sources" data-ico="book">素材库</button>
+        </nav>
+        <div class="nav-heading"><span>工作台配置</span></div>
+        <nav id="config-nav" aria-label="配置"></nav>
+        <div class="nav-heading history-heading">
+          <span>最近对话</span
+          ><button
+            class="icon"
+            data-nav="history"
+            data-ico="search"
+            aria-label="搜索全部历史"
+          ></button>
+        </div>
+        <div id="recent"></div>
+        <button id="all-history" class="subtle" data-nav="history">
+          查看全部历史 <span>→</span>
+        </button>
+        <div class="rail-foot">
+          <span id="avatar" class="avatar">我</span
+          ><span><strong id="owner"></strong><small>本地工作台</small></span
+          ><button id="logout" class="icon" data-ico="logout" aria-label="退出登录"></button>
+        </div>
+      </aside>
+      <button id="scrim" aria-label="关闭导航" hidden></button>
+      <main id="main" tabindex="-1">
+        <header class="topbar">
+          <div class="crumb">
+            <button id="menu" class="icon" data-ico="menu" aria-label="打开导航"></button
+            ><span>工作台</span><b>/</b><strong id="location">助手对话</strong>
+          </div>
+          <div class="top-actions">
+            <label id="agent-wrap" class="pick" data-ico="agent"
+              ><span class="sr">当前智能体</span
+              ><select id="agent" aria-label="当前智能体"></select></label
+            ><button
+              id="help"
+              class="icon"
+              data-ico="help"
+              title="使用引导"
+              aria-label="使用引导"
+            ></button>
+          </div>
+        </header>
+        <section id="chat-view" class="chat-view" aria-label="当前对话">
+          <div id="thread">
+            <div class="chat-inner">
+              <div id="welcome">
+                <div class="hero-art" aria-hidden="true">
+                  <div class="hero-orbit"></div>
+                  <i class="paper back"></i><i class="paper mid"></i
+                  ><i class="paper front"><b></b><b></b><b></b></i><i class="art-check">✓</i>
+                </div>
+                <h1>想从资料中核对什么？</h1>
+                <p>从原文找依据。每次回答，都可以回到读取过的段落。</p>
+                <div id="suggestions">
+                  <button data-question="请逐项核对样品灯和导向牌的到货与验收情况，每项标注出处。">
+                    <i data-ico="compare"></i
+                    ><span
+                      ><strong>核对到货与验收</strong><small>对照签收记录与验收说明</small></span
+                    ><em>↗</em></button
+                  ><button data-question="哪些物品仍缺少验收依据？请列出缺口并标注来源。">
+                    <i data-ico="scan"></i
+                    ><span
+                      ><strong>查找依据缺口</strong><small>找出材料中尚未说明的事项</small></span
+                    ><em>↗</em>
+                  </button>
+                </div>
+              </div>
+              <button id="older" class="plain" hidden>加载更早消息</button>
+              <div id="messages" aria-live="polite"></div>
+            </div>
+          </div>
+          <div class="compose-wrap">
+            <div id="status" role="status"></div>
+            <div id="saved-drafts" aria-live="polite"></div>
+            <form id="compose">
+              <div
+                id="draft-files"
+                class="file-list"
+                aria-label="待发送附件"
+                aria-live="polite"
+                hidden
+              ></div>
+              <label class="sr" for="message">发送消息</label
+              ><textarea
+                id="message"
+                maxlength="2000"
+                rows="2"
+                placeholder="询问材料中的事实，或输入要核对的问题…"
+                required
+              ></textarea>
+              <div class="compose-tools">
+                <input
+                  id="file-input"
+                  type="file"
+                  accept=".txt,.md,.csv,.json,.log,.docx,.pdf"
+                  multiple
+                  hidden
+                />
+                <button
+                  id="attach"
+                  type="button"
+                  class="icon"
+                  data-ico="plus"
+                  title="上传本地文件 · 每个最大 2 MiB"
+                  aria-label="上传本地文件"
+                  hidden
+                ></button>
+                <label class="model-pick" data-ico="layers"
+                  ><select id="model" aria-label="当前模型"></select></label
+                ><button
+                  id="send"
+                  class="send"
+                  aria-label="发送消息"
+                  title="发送"
+                  data-ico="up"
+                ></button>
+              </div>
+            </form>
+            <div class="compose-hint">回车发送 <span>·</span> Shift + 回车换行</div>
+          </div>
+        </section>
+        <section id="page" hidden></section>
+      </main>
+    </div>
+    <dialog id="dialog" aria-labelledby="dialog-title">
+      <div class="dialog-head">
+        <h2 id="dialog-title"></h2>
+        <button id="dialog-close" class="icon" aria-label="关闭" data-ico="close"></button>
+      </div>
+      <div id="dialog-body"></div>
+    </dialog>
+    <div id="guide" role="dialog" aria-modal="false" aria-label="首次使用引导" hidden>
+      <div id="guide-step"></div>
+      <h2 id="guide-title"></h2>
+      <p id="guide-text"></p>
+      <div class="guide-actions">
+        <button id="guide-skip" class="plain">跳过引导</button
+        ><button id="guide-back" class="plain">上一步</button
+        ><button id="guide-next" class="primary">下一步</button>
+      </div>
+    </div>
+    <div id="toast" role="status" hidden></div>
+  </body>
+</html>

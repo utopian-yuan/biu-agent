@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "biu-agent"
+version = "0.1.0"
+description = "Bring AI assistants to your business apps."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "agentscope==2.0.10",
+    "cryptography>=45,<52",
+    "fastapi>=0.119,<1",
+    "httpx>=0.28,<0.29",
+    "pydantic>=2.11,<3",
+    "pypdf>=7.1.1,<8",
+    "pyyaml>=6,<7",
+    "python-dotenv>=1,<2",
+    "uvicorn>=0.35,<1",
+]
+
+[project.optional-dependencies]
+langfuse = [
+    "opentelemetry-exporter-otlp-proto-http>=1.39,<2",
+    "opentelemetry-sdk>=1.39,<2",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.4,<10", "pytest-asyncio>=1,<2"]
+browser = ["playwright>=1.55,<2"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/biu_agent"]
+
+[tool.pytest.ini_options]
+addopts = "-m 'not live'"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+markers = ["live: explicitly run against the configured real model or a public HTTPS source"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
