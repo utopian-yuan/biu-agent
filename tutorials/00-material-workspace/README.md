@@ -79,6 +79,15 @@
 
 ## 复验这条路径
 
+做一次综合核对。保留「到货助手」关于导向牌的答复，从回答里的出处回读 R2，确认它写的是签收和待安排检查。随后切回「材料助手」，找出验收范围的 A2。两份材料能共同解释本次验收只覆盖样品灯。若助手给出了导向牌的验收结论，应把那句话和它引用的原文放在一起检查。工具出现成功记录只证明读取发生过。
+
+| 在界面看到了什么 | 可重复的代码对照 |
+| --- | --- |
+| 列表里少了一项，直接输入旧段号也读不到 | [项目权限与直接读取](../s03_permissions/README.md) |
+| 「本轮上下文」出现技能名，回答仍缺材料 | [技能加载和资料授权分别改变](../s05_skill_loading/README.md) |
+| 同一句追问能理解旧话题，但引用必须在本轮取得 | [历史窗口与错误引用](../s06_context/README.md) |
+| 外部工具被列出或绑定，需要看服务端是否真的执行 | [MCP 回执与服务端计数](../s09_mcp/README.md) |
+
 ```sh
 uv run pytest -q tests/test_material_workspace.py tests/test_material_connections.py tests/test_files_and_tools.py tests/test_conversation_tools.py
 uv sync --locked --group browser

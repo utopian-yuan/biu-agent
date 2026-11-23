@@ -1,5 +1,13 @@
 # 项目变更日志
 
+## 2026-11-23 · 从一份备注的审批学到业务 API 接入
+
+第 03、04 课用第三篇的五张原图，讲清 P-101 备注怎样申请、获批、写入和对账。第 05 到 10 课加入可运行的技能、历史、记忆、调度、MCP 和子任务对照，另增一个只读接入实验，重现列目录后撤权。每课都能从正文直接跳到运行过的代码。[课程导航](../../tutorials/README.md) · [只读接入实战](../../tutorials/lab_readonly_adapter/README.md) · [工作项](../tasks/TASK-20261120-agent-lessons/change.md) · [复验记录](../tasks/TASK-20261120-agent-lessons/evidence.md#e4)
+
+## 2026-11-23 · 跟着回执学 Agent loop 和工具调用
+
+前两课将公众号中的反馈循环、分页和审批改编成可运行的材料核对实验。读者可以对照手写循环与 AgentScope 的五份回执，重现漏掉第二页，并回读同一份批准重试后的待发队列。两份讲义的 Python 摘录均链接到本章源码。[第一课](../../tutorials/s01_agent_loop/README.md) · [第二课](../../tutorials/s02_tools/README.md) · [课程工作项](../tasks/TASK-20261120-agent-lessons/change.md) · [实测记录](../tasks/TASK-20261120-agent-lessons/evidence.md#e3)
+
 ## 2026-11-20 · 发送后立即清空输入框
 
 发送问题时文字和附件一起移入聊天区，等待回答时可继续起草下一问。提交被拒绝时可取回文字和文件。已通过桌面及窄屏浏览器复验。[缺陷记录](../bugs/BUG-20261120-composer-submit/change.md) · [读取期间截图与复验](../bugs/BUG-20261120-composer-submit/evidence.md)
